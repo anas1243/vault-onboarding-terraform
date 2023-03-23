@@ -1,0 +1,1 @@
+it is better to use env variables to define vault provider configurations
