@@ -1,7 +1,7 @@
 resource "vault_ldap_auth_backend" "customer_admins_ldap" {
     depends_on = [var.area_namespace]
     namespace = var.area_namespace
-    path        = var.ldap_path
+    path = var.ldap_path
     url         = var.ldap_url
     userdn      = var.ldap_userdn
     userattr    = var.ldap_userattr

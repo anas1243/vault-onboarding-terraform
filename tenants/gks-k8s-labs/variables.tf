@@ -27,7 +27,6 @@ variable "ldap_url" {
   type = string
 }
 
-# LDAP variables
 variable "ldap_userattr" {
   type = string
 }
