@@ -3,7 +3,7 @@ resource "vault_namespace" "service" {
 }
 
 resource "vault_namespace" "market" {
-    namespace = vault_namespace.service.path_fq
+  namespace = vault_namespace.service.path_fq
   path = var.market
 }
 

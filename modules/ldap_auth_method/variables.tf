@@ -1,25 +1,6 @@
-# Namespaces variables
-variable "service" {
+variable "area_namespace" {
   type = string
 }
-variable "market" {
-  type = string
-}
-variable "area" {
-  type = string
-}
-variable "project" {
-  type = string
-}
-variable "has_prod_env" {
-  type = bool
-}
-
-variable "has_non_prod_env" {
-  type = bool
-}
-
-# LDAP variables
 variable "ldap_path" {
   type = string
 }
@@ -27,7 +8,6 @@ variable "ldap_url" {
   type = string
 }
 
-# LDAP variables
 variable "ldap_userattr" {
   type = string
 }
@@ -53,5 +33,4 @@ variable "ldap_groupdn" {
 variable "ldap_groupfilter" {
   type = string
 }
-
 
