@@ -51,3 +51,11 @@ variable "consumer_alias_name" {
   type    = string
   default = ""
 }
+
+# Secret Engine
+variable "secret_path" {
+  type = string
+}
+variable "secret_type" {
+  type = string
+}

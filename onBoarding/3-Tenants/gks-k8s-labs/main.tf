@@ -96,3 +96,15 @@ module "consumer_identity_alias" {
   group_id         = module.consumer_identity_groups.groups_id
   alias_namespaces = var.working_namespaces
 }
+
+# secret engine v2
+
+module "secret_engine" {
+  depends_on = [
+    module.envs_namespaces.namespaces_path
+  ]
+  source = "../../../modules/kv_engine"
+secret_namespace = var.working_namespaces 
+secret_path = var.secret_path
+secret_type = var.secret_path
+}
