@@ -12,8 +12,8 @@ EOT
 }
 
 resource "vault_policy" "secrets_consumer" {
-  name = "secrets_consumer"
-  count = var.count
+  name   = "secrets_consumer"
+  count  = var.count
   policy = <<EOT
 # Manage secrets
 path "secrets/*"
