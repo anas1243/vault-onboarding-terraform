@@ -1,24 +1,7 @@
-# Namespaces variables
-variable "service" {
-  type = string
+variable "working_namespaces" {
+  type = list
+  default = ["root"]
 }
-variable "market" {
-  type = string
-}
-variable "area" {
-  type = string
-}
-variable "project" {
-  type = string
-}
-variable "has_prod_env" {
-  type = bool
-}
-
-variable "has_non_prod_env" {
-  type = bool
-}
-
 # LDAP variables
 variable "ldap_path" {
   type = string
@@ -53,4 +36,22 @@ variable "ldap_groupfilter" {
   type = string
 }
 
+# Identity/groups
+variable "group_name" {
+  type = string
+}
+variable "group_type" {
+  type = string
+}
 
+# Groups/aliases
+variable "alias_name" {
+  type = string
+}
+
+
+# Policies
+
+variable "policies" {
+  type = list
+}

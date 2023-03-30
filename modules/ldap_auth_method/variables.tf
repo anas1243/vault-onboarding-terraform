@@ -1,5 +1,5 @@
-variable "area_namespace" {
-  type = string
+variable "ldap_namespaces" {
+  type = list
 }
 variable "ldap_path" {
   type = string
