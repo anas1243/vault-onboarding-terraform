@@ -59,3 +59,20 @@ variable "secret_path" {
 variable "secret_type" {
   type = string
 }
+
+# k8s Auth Method
+variable "auth_info" {
+  type = map(object({
+    k8s_ns      = optional(string) 
+    engine_path = string
+    k8s_host    = string
+    ca_crt      = string
+    jwt_token   = string
+    k8s_roles = map(object({
+      role_name = string
+      policies  = list(string)
+      k8s_ns    = list(string)
+      bind_sa   = list(string)
+    }))
+  }))
+}

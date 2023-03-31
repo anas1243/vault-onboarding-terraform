@@ -108,3 +108,17 @@ secret_namespace = var.working_namespaces
 secret_path = var.secret_path
 secret_type = var.secret_path
 }
+
+# k8s Auth Method
+
+module "k8s" {
+  source = "../../../modules/k8s_auth_method"
+  for_each    = var.auth_info
+  engine_path = each.value["engine_path"]
+  k8s_host    = each.value["k8s_host"]
+  ca_crt      = each.value["ca_crt"]
+  jwt_token   = each.value["jwt_token"]
+  k8s_roles   = each.value["k8s_roles"]
+  k8s_ns      = each.value["k8s_ns"]
+}
+
