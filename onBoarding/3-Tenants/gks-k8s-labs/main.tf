@@ -9,7 +9,7 @@ module "project_namespace" {
 
 module "envs_namespaces" {
   depends_on = [
-    module.project_namespace.namespaces_path
+    module.project_namespace
   ]
   source     = "../../../modules/namespaces"
   namespaces = var.envs_namespaces
@@ -18,7 +18,7 @@ module "envs_namespaces" {
 
 module "owner_ldap_auth_method" {
   depends_on = [
-    module.envs_namespaces.namespaces_path
+    module.envs_namespaces
   ]
   source          = "../../../modules/ldap_auth_method"
   ldap_namespaces = var.working_namespaces
@@ -27,7 +27,7 @@ module "owner_ldap_auth_method" {
 
 module "consumer_ldap_auth_method" {
   depends_on = [
-    module.envs_namespaces.namespaces_path
+    module.envs_namespaces
   ]
   source          = "../../../modules/ldap_auth_method"
   ldap_namespaces = var.working_namespaces
@@ -37,7 +37,7 @@ module "consumer_ldap_auth_method" {
 
 module "secret_owner_policies" {
   depends_on = [
-    module.envs_namespaces.namespaces_path
+    module.envs_namespaces
   ]
   source            = "../../../modules/policies"
   policies          = var.secret_owner_policies
@@ -46,7 +46,7 @@ module "secret_owner_policies" {
 
 module "secret_consumer_policies" {
   depends_on = [
-    module.envs_namespaces.namespaces_path
+    module.envs_namespaces
   ]
   source            = "../../../modules/policies"
   policies          = var.secret_consumer_policies
@@ -55,7 +55,7 @@ module "secret_consumer_policies" {
 
 module "owner_identity_groups" {
   depends_on = [
-    module.envs_namespaces.namespaces_path
+    module.envs_namespaces
   ]
   source           = "../../../modules/groups"
   group_name       = var.owner_group_name
@@ -66,7 +66,7 @@ module "owner_identity_groups" {
 
 module "consumer_identity_groups" {
   depends_on = [
-    module.envs_namespaces.namespaces_path
+    module.envs_namespaces
   ]
   source           = "../../../modules/groups"
   group_name       = var.consumer_group_name
@@ -77,7 +77,7 @@ module "consumer_identity_groups" {
 
 module "owner_identity_alias" {
   depends_on = [
-    module.envs_namespaces.namespaces_path
+    module.envs_namespaces
   ]
   source           = "../../../modules/aliases"
   alias_name       = var.owner_alias_name
@@ -88,7 +88,7 @@ module "owner_identity_alias" {
 
 module "consumer_identity_alias" {
   depends_on = [
-    module.envs_namespaces.namespaces_path
+    module.envs_namespaces
   ]
   source           = "../../../modules/aliases"
   alias_name       = var.consumer_alias_name
@@ -101,7 +101,7 @@ module "consumer_identity_alias" {
 
 module "secret_engine" {
   depends_on = [
-    module.envs_namespaces.namespaces_path
+    module.envs_namespaces
   ]
   source = "../../../modules/kv_engine"
 secret_namespace = var.working_namespaces 
@@ -113,6 +113,9 @@ secret_type = var.secret_path
 
 module "k8s" {
   source = "../../../modules/k8s_auth_method"
+  depends_on = [
+    module.envs_namespaces
+  ]
   for_each    = var.auth_info
   engine_path = each.value["engine_path"]
   k8s_host    = each.value["k8s_host"]
